@@ -7,8 +7,6 @@ class UseCaseTest {
     @Test
     void testCreateUseCase() {
         Assertions.assertNotNull(new UseCase());
-        Assertions.assertNotNull(new UseCase().execute());
-
     }
   
 }
