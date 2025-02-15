@@ -1,5 +1,7 @@
 package lab.lhss.admin.catalog.domain;
 
+import lab.lhss.admin.catalog.domain.validation.ValidationHandler;
+
 import java.util.Objects;
 
 public abstract class Entity<ID extends Identifier> {
@@ -10,6 +12,8 @@ public abstract class Entity<ID extends Identifier> {
         Objects.requireNonNull(id, "id cannot be null");
         this.id = id;
     }
+
+    public abstract void validate(ValidationHandler handler);
 
     public ID getId() {
         return id;

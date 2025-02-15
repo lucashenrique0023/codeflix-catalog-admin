@@ -1,18 +1,19 @@
 package lab.lhss.admin.catalog.domain.category;
 
 import lab.lhss.admin.catalog.domain.AggregateRoot;
+import lab.lhss.admin.catalog.domain.validation.CategoryValidator;
+import lab.lhss.admin.catalog.domain.validation.ValidationHandler;
 
 import java.time.Instant;
-import java.util.UUID;
 
 public class Category extends AggregateRoot<CategoryID> {
 
-    private String name;
-    private String description;
-    private boolean active;
-    private Instant createdAt;
-    private Instant updatedAt;
-    private Instant deletedAt;
+    private final String name;
+    private final String description;
+    private final boolean active;
+    private final Instant createdAt;
+    private final Instant updatedAt;
+    private final Instant deletedAt;
 
     private Category(CategoryID id, String name, String description, boolean active,
                      Instant createdAt, Instant updatedAt, Instant deletedAt) {
@@ -29,6 +30,11 @@ public class Category extends AggregateRoot<CategoryID> {
         final var id = CategoryID.unique();
         final var now = Instant.now();
         return new Category(id, name, description, active, now, now, null);
+    }
+
+    @Override
+    public void validate(final ValidationHandler handler) {
+        new CategoryValidator(this, handler).validate();
     }
 
     public CategoryID getId() {
