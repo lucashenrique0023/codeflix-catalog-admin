@@ -1,8 +1,7 @@
 package lab.lhss.category.create;
 
 import lab.lhss.admin.catalog.domain.category.CategoryGateway;
-import lab.lhss.admin.catalog.domain.exceptions.DomainException;
-import org.junit.jupiter.api.Assertions;
+import lab.lhss.admin.catalog.domain.validation.handler.Notification;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -36,7 +35,7 @@ public class CreateCategoryUseCaseTest {
 
         when(categoryGateway.create(any())).thenAnswer(returnsFirstArg());
 
-        final var actualOutput = useCase.execute(command);
+        final var actualOutput = useCase.execute(command).get();
 
         assertNotNull(actualOutput.id());
 
@@ -61,9 +60,10 @@ public class CreateCategoryUseCaseTest {
 
         final var command = CreateCategoryCommand.with(expectedName, expectedDescription, expectedIsActive);
 
-        final var actualException = Assertions.assertThrows(DomainException.class, () -> useCase.execute(command));
+        Notification notification = useCase.execute(command).getLeft();
 
-        assertEquals(expectedErrorMessage, actualException.getMessage());
+        assertEquals(expectedErrorCount, notification.getErrors().size());
+        assertEquals(expectedErrorMessage, notification.firstError().message());
         verify(categoryGateway, times(0)).create(any());
     }
 
@@ -77,7 +77,7 @@ public class CreateCategoryUseCaseTest {
 
         when(categoryGateway.create(any())).thenAnswer(returnsFirstArg());
 
-        final var actualOutput = useCase.execute(command);
+        final var actualOutput = useCase.execute(command).get();
 
         assertNotNull(actualOutput.id());
 
@@ -105,9 +105,10 @@ public class CreateCategoryUseCaseTest {
 
         when(categoryGateway.create(any())).thenThrow(new IllegalStateException(expectedErrorMessage));
 
-        final var actualException = Assertions.assertThrows(IllegalStateException.class, () -> useCase.execute(command));
+        Notification notification = useCase.execute(command).getLeft();
 
-        assertEquals(expectedErrorMessage, actualException.getMessage());
+        assertEquals(expectedErrorCount, notification.getErrors().size());
+        assertEquals(expectedErrorMessage, notification.firstError().message());
 
         verify(categoryGateway, times(1)).create(argThat(category ->
                 Objects.equals(expectedName, category.getName())
