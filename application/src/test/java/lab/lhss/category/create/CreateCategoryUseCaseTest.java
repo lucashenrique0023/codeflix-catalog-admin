@@ -2,10 +2,12 @@ package lab.lhss.category.create;
 
 import lab.lhss.admin.catalog.domain.category.CategoryGateway;
 import lab.lhss.admin.catalog.domain.validation.handler.Notification;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Objects;
@@ -23,6 +25,11 @@ public class CreateCategoryUseCaseTest {
 
     @InjectMocks
     private DefaultCreateCategoryUseCase useCase;
+
+    @BeforeEach
+    void cleanUp() {
+        Mockito.reset(categoryGateway);
+    }
 
     @Test
     public void givenAValidCommand_whenCallCreateCategory_thenReturnCategoryId() {
