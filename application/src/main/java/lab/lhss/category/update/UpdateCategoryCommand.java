@@ -1,4 +1,4 @@
-package lab.lhss.update;
+package lab.lhss.category.update;
 
 public record UpdateCategoryCommand(
         String id,

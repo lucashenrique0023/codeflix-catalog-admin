@@ -1,4 +1,4 @@
-package lab.lhss.update;
+package lab.lhss.category.update;
 
 import lab.lhss.admin.catalog.domain.category.Category;
 import lab.lhss.admin.catalog.domain.category.CategoryID;

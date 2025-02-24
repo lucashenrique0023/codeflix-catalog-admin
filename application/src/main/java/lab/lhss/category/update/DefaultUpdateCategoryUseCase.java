@@ -1,4 +1,4 @@
-package lab.lhss.update;
+package lab.lhss.category.update;
 
 import io.vavr.API;
 import io.vavr.control.Either;

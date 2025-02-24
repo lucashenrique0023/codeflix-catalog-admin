@@ -1,6 +1,5 @@
 package lab.lhss.category.create;
 
-import io.vavr.API;
 import io.vavr.control.Either;
 import lab.lhss.admin.catalog.domain.category.Category;
 import lab.lhss.admin.catalog.domain.category.CategoryGateway;

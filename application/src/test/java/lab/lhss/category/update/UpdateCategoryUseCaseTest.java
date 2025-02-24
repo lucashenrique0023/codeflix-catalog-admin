@@ -4,8 +4,6 @@ import lab.lhss.admin.catalog.domain.category.Category;
 import lab.lhss.admin.catalog.domain.category.CategoryGateway;
 import lab.lhss.admin.catalog.domain.category.CategoryID;
 import lab.lhss.admin.catalog.domain.exceptions.DomainException;
-import lab.lhss.update.DefaultUpdateCategoryUseCase;
-import lab.lhss.update.UpdateCategoryCommand;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
