@@ -39,6 +39,7 @@ public class UpdateCategoryUseCaseTest {
     public void givenAValidCommand_whenCallsUpdateCategory_shouldReturnCategoryId() {
         final var aCategory =
                 Category.newCategory("Film", null, true);
+
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
@@ -100,7 +101,7 @@ public class UpdateCategoryUseCaseTest {
         Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, notification.firstError().message());
 
-        verify(categoryGateway, times(0)).update(any());
+        Mockito.verify(categoryGateway, times(0)).update(any());
     }
 
     @Test
@@ -119,8 +120,10 @@ public class UpdateCategoryUseCaseTest {
                 expectedDescription,
                 expectedIsActive
         );
+
         when(categoryGateway.findById(eq(expectedId)))
                 .thenReturn(Optional.of(Category.with(aCategory)));
+
         when(categoryGateway.update(any()))
                 .thenAnswer(returnsFirstArg());
 
@@ -132,9 +135,9 @@ public class UpdateCategoryUseCaseTest {
         Assertions.assertNotNull(actualOutput);
         Assertions.assertNotNull(actualOutput.id());
 
-        verify(categoryGateway, times(1)).findById(eq(expectedId));
+        Mockito.verify(categoryGateway, times(1)).findById(eq(expectedId));
 
-        verify(categoryGateway, times(1)).update(argThat(
+        Mockito.verify(categoryGateway, times(1)).update(argThat(
                 aUpdatedCategory ->
                         Objects.equals(expectedName, aUpdatedCategory.getName())
                                 && Objects.equals(expectedDescription, aUpdatedCategory.getDescription())
@@ -176,7 +179,7 @@ public class UpdateCategoryUseCaseTest {
         Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, notification.firstError().message());
 
-        verify(categoryGateway, times(1)).update(argThat(
+        Mockito.verify(categoryGateway, times(1)).update(argThat(
                 aUpdatedCategory ->
                         Objects.equals(expectedName, aUpdatedCategory.getName())
                                 && Objects.equals(expectedDescription, aUpdatedCategory.getDescription())
@@ -213,8 +216,8 @@ public class UpdateCategoryUseCaseTest {
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
 
-        verify(categoryGateway, times(1)).findById(eq(CategoryID.from(expectedId)));
+        Mockito.verify(categoryGateway, times(1)).findById(eq(CategoryID.from(expectedId)));
 
-        verify(categoryGateway, times(0)).update(any());
+        Mockito.verify(categoryGateway, times(0)).update(any());
     }
 }
