@@ -5,6 +5,7 @@ import lab.lhss.admin.catalog.domain.category.CategoryGateway;
 import lab.lhss.admin.catalog.domain.category.CategoryID;
 import lab.lhss.admin.catalog.domain.category.CategorySearchQuery;
 import lab.lhss.admin.catalog.domain.pagination.Pagination;
+import lab.lhss.admin.catalog.infrastructure.category.persistence.CategoryJpaEntity;
 import lab.lhss.admin.catalog.infrastructure.category.persistence.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class CategoryMySQLGateway implements CategoryGateway {
 
     @Override
     public Category create(Category aCategory) {
-        return null;
+        return this.repository.save(CategoryJpaEntity.from(aCategory)).toAggregate();
     }
 
     @Override
