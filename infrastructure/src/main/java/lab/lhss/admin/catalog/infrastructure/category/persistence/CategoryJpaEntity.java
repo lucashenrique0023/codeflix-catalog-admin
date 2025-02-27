@@ -1,4 +1,4 @@
-package lab.lhss.admin.catalog.infrastructure.category.persistence.Category;
+package lab.lhss.admin.catalog.infrastructure.category.persistence;
 
 import lab.lhss.admin.catalog.domain.category.Category;
 import lab.lhss.admin.catalog.domain.category.CategoryID;
