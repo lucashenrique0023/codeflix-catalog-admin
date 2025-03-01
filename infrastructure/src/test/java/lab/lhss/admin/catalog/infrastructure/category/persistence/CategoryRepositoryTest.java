@@ -1,7 +1,7 @@
 package lab.lhss.admin.catalog.infrastructure.category.persistence;
 
 import lab.lhss.admin.catalog.domain.category.Category;
-import lab.lhss.admin.catalog.infrastructure.MySQLGatewayTest;
+import lab.lhss.admin.catalog.MySQLGatewayTest;
 import org.hibernate.PropertyValueException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

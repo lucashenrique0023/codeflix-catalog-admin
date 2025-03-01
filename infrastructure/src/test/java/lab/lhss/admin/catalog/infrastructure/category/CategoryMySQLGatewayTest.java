@@ -3,7 +3,7 @@ package lab.lhss.admin.catalog.infrastructure.category;
 import lab.lhss.admin.catalog.domain.category.Category;
 import lab.lhss.admin.catalog.domain.category.CategoryID;
 import lab.lhss.admin.catalog.domain.category.CategorySearchQuery;
-import lab.lhss.admin.catalog.infrastructure.MySQLGatewayTest;
+import lab.lhss.admin.catalog.MySQLGatewayTest;
 import lab.lhss.admin.catalog.infrastructure.category.persistence.CategoryJpaEntity;
 import lab.lhss.admin.catalog.infrastructure.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;

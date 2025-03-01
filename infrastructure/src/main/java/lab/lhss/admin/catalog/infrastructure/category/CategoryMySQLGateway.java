@@ -9,7 +9,6 @@ import lab.lhss.admin.catalog.infrastructure.category.persistence.CategoryJpaEnt
 import lab.lhss.admin.catalog.infrastructure.category.persistence.CategoryRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
