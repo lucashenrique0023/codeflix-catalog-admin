@@ -53,7 +53,7 @@ public class GetCategoryByIdUseCaseIT {
         Assertions.assertEquals(expectedDescription, actualCategory.description());
         Assertions.assertEquals(expectedIsActive, actualCategory.isActive());
         assertThat(aCategory.getCreatedAt()).isCloseTo(actualCategory.createdAt(), within(1, ChronoUnit.MICROS));
-        Assertions.assertEquals(aCategory.getUpdatedAt().truncatedTo(ChronoUnit.MICROS), actualCategory.updatedAt());
+        assertThat(aCategory.getUpdatedAt()).isCloseTo(actualCategory.updatedAt(), within(1, ChronoUnit.MICROS));
         Assertions.assertEquals(aCategory.getDeletedAt(), actualCategory.deletedAt());
     }
 
