@@ -1,4 +1,4 @@
-package lab.lhss.admin.catalog.infrastructure.category.persistence.utils;
+package lab.lhss.admin.catalog.infrastructure.utils;
 
 import org.springframework.data.jpa.domain.Specification;
 

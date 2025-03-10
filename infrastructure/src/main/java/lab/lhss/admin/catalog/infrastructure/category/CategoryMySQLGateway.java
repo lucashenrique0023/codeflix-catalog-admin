@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static lab.lhss.admin.catalog.infrastructure.category.persistence.utils.SpecificationUtils.like;
+import static lab.lhss.admin.catalog.infrastructure.utils.SpecificationUtils.like;
 
 @Service
 public class CategoryMySQLGateway implements CategoryGateway {
