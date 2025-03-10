@@ -3,7 +3,9 @@ package lab.lhss.admin.catalog.infrastructure.api.controllers;
 import lab.lhss.admin.catalog.domain.pagination.Pagination;
 import lab.lhss.admin.catalog.infrastructure.api.CategoryAPI;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class CategoryController implements CategoryAPI {
 
     @Override
