@@ -1,7 +1,8 @@
-package lab.lhss.admin.catalog.infrastructure.api;
+package lab.lhss.admin.catalog.infrastructure.api.controllers;
 
 import lab.lhss.admin.catalog.domain.pagination.Pagination;
 import lab.lhss.admin.catalog.domain.validation.handler.Notification;
+import lab.lhss.admin.catalog.infrastructure.api.CategoryAPI;
 import lab.lhss.admin.catalog.infrastructure.category.models.CreateCategoryApiInput;
 import lab.lhss.category.create.CreateCategoryCommand;
 import lab.lhss.category.create.CreateCategoryOutput;
