@@ -1,15 +1,14 @@
 package lab.lhss.category.create;
 
 import lab.lhss.admin.catalog.domain.category.Category;
-import lab.lhss.admin.catalog.domain.category.CategoryID;
 
-public record CreateCategoryOutput(CategoryID id) {
+public record CreateCategoryOutput(String id) {
 
-    public static CreateCategoryOutput from(final CategoryID anId) {
+    public static CreateCategoryOutput from(final String anId) {
         return new CreateCategoryOutput(anId);
     }
 
     public static CreateCategoryOutput from(final Category category) {
-        return new CreateCategoryOutput(category.getId());
+        return new CreateCategoryOutput(category.getId().getValue());
     }
 }
